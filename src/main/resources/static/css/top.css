@@ -1,0 +1,130 @@
+ /* 기본 리셋 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+    }
+    /* 네비게이션 바 기본 스타일 */
+    .navbar {
+      background-color: #333;
+      position: relative;
+    }
+    .container-fluid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    /* 햄버거 아이콘 - 체크박스 해킹 사용 */
+    #nav-toggle {
+      display: none;
+    }
+    .nav-toggle-label {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+    }
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+      display: block;
+      background: #fff;
+      height: 3px;
+      width: 100%;
+      border-radius: 3px;
+      position: absolute;
+    }
+    .nav-toggle-label span {
+      top: 50%;
+      margin-top: -1.5px;
+    }
+    .nav-toggle-label span::before {
+      content: '';
+      top: -10px;
+    }
+    .nav-toggle-label span::after {
+      content: '';
+      top: 10px;
+    }
+    /* 메뉴 스타일 */
+    .navbar-nav {
+      list-style: none;
+      display: flex;
+    }
+    .navbar-nav li {
+      position: relative;
+    }
+    .navbar-nav li a {
+      display: block;
+      padding: 14px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .navbar-nav li a:hover {
+      background-color: #575757;
+    }
+    /* 드롭다운 메뉴 */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      top: 100%;
+      left: 0;
+      min-width: 160px;
+      z-index: 1000;
+    }
+    .dropdown-menu li a {
+      padding: 12px 16px;
+    }
+    .dropdown-menu li a:hover {
+      background-color: #575757;
+    }
+    /* 드롭다운 활성화: 마우스 오버 시 */
+    li.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+      .container-fluid {
+        flex-wrap: wrap;
+        height: auto;
+      }
+      /* 햄버거 아이콘 보이기 */
+      .nav-toggle-label {
+        display: block;
+      }
+      /* 메뉴 숨기기 */
+      .navbar-nav {
+        width: 100%;
+        flex-direction: column;
+        display: none;
+      }
+      .navbar-nav li {
+        width: 100%;
+      }
+      .navbar-nav li a {
+        padding: 10px 20px;
+      }
+      /* 체크박스가 체크되면 메뉴 보이기 */
+      #nav-toggle:checked ~ .container-fluid .navbar-nav {
+        display: flex;
+      }
+      /* 드롭다운은 클릭 시 열리게 하려면 별도 JS가 필요하므로 
+         여기서는 hover로 동작 (터치환경은 추가 개선 필요) */
+      li.dropdown:hover .dropdown-menu {
+        position: static;
+      }
+    }
